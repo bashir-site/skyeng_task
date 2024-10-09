@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список таваров</title>
+</head>
+<body>
+    <h1>Список таваров</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Категория</th>
+            <th>Статус </th>
+            <th>Цена</th>
+            <th>Прошлый месяц</th>
+            <th>Текущий месяц</th>
+        </tr>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.category }}</td>
+                <td>{{ product.status }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.get_orders_last_month }}</td>
+                <td>{{ product.get_orders_current_month }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
