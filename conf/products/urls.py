@@ -1,7 +1,10 @@
 from django.urls import path
-from .views import products_list, add_new_product
+from .views import see, add, edit, update, destroy
 
 urlpatterns = [
-    path('', products_list, name='products_list'),
-    path('add', add_new_product, name='add_new_product'),
+    path('', see, name='see'),
+    path('add', add, name='add'),
+    path('edit/<int:id>', edit, name='edit'),
+    path('update/<int:id>', update, name='update'),
+    path('delete/<int:id>', destroy, name='destroy'),
 ]
