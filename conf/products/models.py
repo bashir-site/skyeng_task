@@ -1,6 +1,14 @@
 from django.db import models
 from django.utils import timezone
 
+
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
 class Product(models.Model):
     STATUS_CHOICES = (
         ('active', 'Active'),
@@ -8,7 +16,7 @@ class Product(models.Model):
     )
     
     name = models.CharField(max_length=255)
-    category = models.CharField(max_length=255)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     orders_last_month = models.IntegerField(default=0)
