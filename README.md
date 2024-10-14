@@ -2,8 +2,14 @@
 
 Ссылка на проект: https://fannyfanny879.pythonanywhere.com/
 
-Логин: admin
-Пароль admin
+Логин: 
+```bash
+admin
+```
+Пароль: 
+```bash
+admin
+```
 
 ## Установка и запуск
 
