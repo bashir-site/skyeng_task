@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Изменить товар
+{% endblock title %}
+
+{% block content %}
+    <div class="col-md-12">
+        <form method="POST" class="post-form" action="{% url 'update' product.id %}">
+            {% csrf_token %}
+            <div class="container">
+                <div class="col-12">
+                    <h3>Обновить запись товара</h3>                    
+                </div>
+                
+                <div class="md-3">
+                    <label>ID товара:</label>
+                    <input type="text" class="form-control" name="id" id="id_id" required maxlength="20" value="{{ product.id }}">
+                </div> 
+
+                <div class="md-3">
+                    <label>Название:</label>
+                    <input type="text" class="form-control" name="name" id="id_name" required maxlength="100" value="{{ product.name }}">
+                </div> 
+
+                <div class="md-3">
+                    <label>Категория:</label>
+                    <select class="form-control" name="category" id="id_category" required>
+                        {% for cat in categories %}
+                            <option value="{{ cat.id }}" {% if product.category.id == cat.id %}selected{% endif %}>{{ cat.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="md-3">
+                    <label>Статус:</label>
+                    <input type="text" class="form-control" name="status" id="id_status" required maxlength="20" value="{{ product.status }}">
+                </div>
+
+                <div class="md-3">
+                    <label>Цена:</label>
+                    <input type="text" class="form-control" name="price" id="id_price" required maxlength="20" value="{{ product.price }}">
+                </div>
+
+                <br>
+
+                <div class="md-3">
+                    <button type="submit" class="btn btn-primary">Обновить</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+</body>
+</html>

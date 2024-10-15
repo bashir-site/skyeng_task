@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./conf/
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=conf.settings
+    depends_on:
+      - db
+
+  db:
+    image: nouchka/sqlite3:latest
+    volumes:
+      - sqlite_db:/app/sqlite.db
+
+volumes:
+  sqlite_db:
+
